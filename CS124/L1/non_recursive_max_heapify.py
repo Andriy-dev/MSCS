@@ -1,3 +1,7 @@
+from math import *
+from binarytree import Node
+from binarytree import build
+
 class Heap:
     def __init__(self,a):
         self.heap=a
@@ -5,6 +9,8 @@ class Heap:
     
     def print_heap(self):
         print(self.heap,self.is_heap())
+        root = build(self.heap)
+        print(root)
 
     def is_heap(self):
         
@@ -24,6 +30,10 @@ class Heap:
     
     def right_child(self,i):
         return (2*i + 1)
+
+    def build_max_heap(self):
+        for i in range(floor(self.size/2),0,-1):
+            self.heapify_at(i)
 
     def heapify_at(self,i,verbose=False):
         if i > self.size:
@@ -53,7 +63,8 @@ class Heap:
 
 if __name__ == '__main__':
 
-    h = Heap([27,17,3,16,13,10,1,5,7,12,4,8,9,0])
+    h = Heap([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])
     h.print_heap()
-    h.heapify_at(3,True)
+    h.build_max_heap()
+    h.print_heap()
         
